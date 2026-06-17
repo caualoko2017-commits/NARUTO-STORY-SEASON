@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA SEASON NARUTO STORY</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #ff7b00 0%, #1a1a1a 35%, #000 100%);
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+body::before{
+    content:"☁ ☁ ☁";
+    position:absolute;
+    top:10%;
+    width:100%;
+    font-size:120px;
+    opacity:0.05;
+}
+
+.container{
+    z-index:2;
+    padding:20px;
+}
+
+h1{
+    font-size:4rem;
+    color:#ff7b00;
+    text-shadow:
+        0 0 10px #ff7b00,
+        0 0 20px #ff7b00,
+        0 0 40px #ff7b00;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    font-size:1.3rem;
+    color:#ddd;
+    margin-bottom:40px;
+    letter-spacing:2px;
+}
+
+.contador{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.box{
+    width:140px;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,123,0,0.08);
+    border:1px solid rgba(255,123,0,0.4);
+    box-shadow:0 0 20px rgba(255,123,0,0.3);
+}
+
+.numero{
+    font-size:3rem;
+    font-weight:bold;
+    color:#ffb347;
+    text-shadow:0 0 15px #ff7b00;
+}
+
+.texto{
+    margin-top:10px;
+    color:#ddd;
+    letter-spacing:2px;
+}
+
+#fim{
+    display:none;
+    font-size:3rem;
+    color:#ff7b00;
+    text-shadow:0 0 20px #ff7b00;
+}
+
+.frase{
+    margin-top:30px;
+    color:#bbb;
+    font-style:italic;
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:2.2rem;
+    }
+
+    .box{
+        width:100px;
+    }
+
+    .numero{
+        font-size:2rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🍥 NOVA SEASON NARUTO STORY 🍥</h1>
+
+    <div class="subtitulo">
+        A nova jornada começa em 26/06 às 15:00
+    </div>
+
+    <div class="contador">
+
+        <div class="box">
+            <div id="dias" class="numero">00</div>
+            <div class="texto">DIAS</div>
+        </div>
+
+        <div class="box">
+            <div id="horas" class="numero">00</div>
+            <div class="texto">HORAS</div>
+        </div>
+
+        <div class="box">
+            <div id="minutos" class="numero">00</div>
+            <div class="texto">MINUTOS</div>
+        </div>
+
+        <div class="box">
+            <div id="segundos" class="numero">00</div>
+            <div class="texto">SEGUNDOS</div>
+        </div>
+
+    </div>
+
+    <div class="frase">
+        "Dia de colocar polaco na chapa"
+    </div>
+
+    <div id="fim">
+        🔥 A NOVA SEASON COMEÇOU! 🔥
+    </div>
+
+</div>
+
+<script>
+
+const dataFinal = new Date("2026-06-26T15:00:00").getTime();
+
+function atualizar() {
+
+    const agora = new Date().getTime();
+    const distancia = dataFinal - agora;
+
+    if (distancia <= 0) {
+        document.querySelector(".contador").style.display = "none";
+        document.querySelector(".frase").style.display = "none";
+        document.getElementById("fim").style.display = "block";
+        return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").innerText = dias;
+    document.getElementById("horas").innerText = horas;
+    document.getElementById("minutos").innerText = minutos;
+    document.getElementById("segundos").innerText = segundos;
+}
+
+atualizar();
+setInterval(atualizar, 1000);
+
+</script>
+
+</body>
+</html>
